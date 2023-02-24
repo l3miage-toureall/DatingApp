@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -18,7 +19,8 @@ namespace API.Extensions
             });   
 
             services.AddCors();
-            services.AddScoped<IToken, Services.TokenService>();
+            services.AddScoped<IToken, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
