@@ -46,14 +46,10 @@ namespace API.Controllers
                 UserName = registerDto.UserName.ToLower(),
                 Token = _tokenService.CreateToken(user)
 
-            };
-
-            
-            
+            };   
         }
 
         [HttpPost("login")]
-
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var loginUser = await UserToLogin(loginDto.UserName);
@@ -69,14 +65,18 @@ namespace API.Controllers
 
             return new UserDto {
                 UserName = loginDto.UserName.ToLower(),
-                Token = _tokenService.CreateToken(loginUser)
+                Token = _tokenService.CreateToken(loginUser),
+                PhotoUrl = loginUser.Photos.FirstOrDefault(x => x.IsMain)?.Url
+
 
             };
         }
 
         private async Task<AppUser> UserToLogin(string userName)
         {
-            return await _dataContext.Users.SingleOrDefaultAsync(x => x.UserName == userName.ToLower());
+            return await _dataContext.Users
+            .Include( p => p.Photos)
+            .SingleOrDefaultAsync(x => x.UserName == userName.ToLower());
         }
 
         private async Task<bool> ExistedUsername(string userName)

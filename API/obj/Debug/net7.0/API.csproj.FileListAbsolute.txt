@@ -158,3 +158,5 @@
 /Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/obj/Debug/net7.0/ref/API.dll
 /Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/bin/Debug/net7.0/CloudinaryDotNet.dll
 /Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/bin/Debug/net7.0/Newtonsoft.Json.dll
+/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/bin/Debug/net7.0/CloudinaryDotNet.dll
+/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/bin/Debug/net7.0/Newtonsoft.Json.dll
