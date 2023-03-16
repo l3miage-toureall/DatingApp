@@ -18,6 +18,9 @@ namespace API.Data
             _context = context;
             _mapper = mapper;
         }
+
+        
+
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
             return await _context.Users
