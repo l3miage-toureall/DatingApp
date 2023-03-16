@@ -8,6 +8,7 @@ using API.Data;
 using API.Dtos;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,9 +18,10 @@ namespace API.Controllers
     { 
         private readonly DataContext _dataContext;
         private readonly IToken _tokenService;
-
-        public AccountController(DataContext dataContext, IToken tokenService)
+        private readonly IMapper _mapper;
+        public AccountController(DataContext dataContext, IToken tokenService, IMapper mapper)
         {
+            _mapper = mapper;
             _dataContext = dataContext;
             _tokenService = tokenService;
         }
@@ -29,21 +31,22 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if(await ExistedUsername(registerDto.UserName)) return BadRequest("Username already taken!");
+
+            var user= _mapper.Map<AppUser>(registerDto);
     
             using var hmac = new HMACSHA512();
 
-            var user = new  AppUser
-            {
-                UserName = registerDto.UserName.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
-
+            
+                user.UserName = registerDto.UserName.ToLower();
+                user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+                user.PasswordSalt = hmac.Key;
+           
             await _dataContext.Users.AddAsync(user);
             _dataContext.SaveChanges();
 
             return new UserDto {
                 UserName = registerDto.UserName.ToLower(),
+                KnownAs =  user.KnownAs,
                 Token = _tokenService.CreateToken(user)
 
             };   
@@ -66,7 +69,8 @@ namespace API.Controllers
             return new UserDto {
                 UserName = loginDto.UserName.ToLower(),
                 Token = _tokenService.CreateToken(loginUser),
-                PhotoUrl = loginUser.Photos.FirstOrDefault(x => x.IsMain)?.Url
+                PhotoUrl = loginUser.Photos.FirstOrDefault(x => x.IsMain)?.Url,
+                KnownAs =  loginUser.KnownAs,
 
 
             };
