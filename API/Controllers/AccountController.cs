@@ -42,7 +42,7 @@ namespace API.Controllers
                 user.PasswordSalt = hmac.Key;
            
             await _dataContext.Users.AddAsync(user);
-            _dataContext.SaveChanges();
+            await _dataContext.SaveChangesAsync();
 
             return new UserDto {
                 UserName = registerDto.UserName.ToLower(),

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/API.csproj": {}
+    "/Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/API.csproj": {}
   },
   "projects": {
-    "/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/API.csproj": {
+    "/Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/API.csproj",
+        "projectUniqueName": "/Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/API.csproj",
-        "packagesPath": "/Users/sdh/.nuget/packages/",
-        "outputPath": "/Users/sdh/Desktop/EXTREMEPROG/DatingApp/API/obj/",
+        "projectPath": "/Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/API.csproj",
+        "packagesPath": "/Users/allassanetoure/.nuget/packages/",
+        "outputPath": "/Users/allassanetoure/Desktop/ExtremeProgramming/Dotnet/DatingApp-Server/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/sdh/.nuget/NuGet/NuGet.Config"
+          "/Users/allassanetoure/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
