@@ -11,11 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-<<<<<<<< HEAD:API/Data/Migrations/20230317083127_ExtendedEntity.Designer.cs
-    [Migration("20230317083127_ExtendedEntity")]
-========
     [Migration("20230316210930_ExtendedEntity")]
->>>>>>>> 67a025d (update migrations):API/Data/Migrations/20230316210930_ExtendedEntity.Designer.cs
     partial class ExtendedEntity
     {
         /// <inheritdoc />
